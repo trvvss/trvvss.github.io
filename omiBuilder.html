@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>OMI Builder</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" >
+    <link rel="stylesheet" type="text/css" href="css/omiBuilder.css" >
+    <link rel="stylesheet" type="text/css" href="css/pikaday.css">
+    <link rel="shortcut icon" type="image/png" href="img/icon.png"/>
+  </head>
+  <body>
+  	<div id="bodyContainer">
+  	<div id="header">
+  		<div id="zonarLogo"><img src="img/zonarLogo.png"></div>	
+  	</div>
+  	<div id="mainContainer">
+		<div id="firstColumn">
+			<div id="checkboxDiv">
+			  	<form id="omiReturnValueForm">
+				  	<fieldset>
+					    <legend>Choose Your Requested OMI Call Return Values or Intention</legend>
+					    <div id="selectableReturnDiv">
+						    <label for="returnValueSelector">Return Value:</label>
+							<select id="returnValueSelector">
+							    <option>--Please choose an option--</option>
+							</select>
+						</div>
+						<div id="checkboxValues">
+
+						</div>
+					</fieldset>
+				</form>
+
+			</div>
+			<div id="logicSelectorDiv">
+				<form id="logicSelector">
+					<fieldset>
+						<legend>Choose AND/OR Logic</legend>
+						<div>
+							<input type="radio" id="andLogicButton" name="logicButton">
+							<label for="andLogicButton">AND</label>
+						</div>
+						<div>
+							<input type="radio" id="orLogicButton" name="logicButton" checked>
+							<label for="orLogicButton">OR</label>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div id="secondColumn">
+			<div id="matchingCallDiv">
+				<div id="matchingCallHeader">
+					<h1>Matching OMI Calls</h1>
+					<p id="matchingCallInstructions">Click on a Return Checkbox to See Associated OMI Calls</p>
+				</div>
+				<div id="matchingCallScroll">
+					<ul id="omiCallItems"></ul>
+				</div>
+			</div>
+		</div>
+		<div id="thirdColumn">
+			<div id="callDetailsDiv">
+				<div id="callDetailsHeader">
+					<h1>OMI Call Details</h1>
+					<h2 id="callDetailsName">Begin By Checking a Return Value</h2>
+					<p id="callDetailsInstructions">Click on a Matching OMI Call for Full Details</p>
+					<a id="callDetailsExternalURLlinkHook"></a>
+				</div>
+				<div id="callDetailsContents">
+					<div id="callDetailsRequired">
+						<div id="callDetailsRequiredHeader">
+						<h3>Required Parameters</h3>
+						</div>
+						<div id="callRequiredHook">
+						</div>
+					</div>
+					<div id="callDetailsOptional">
+						<div id="callDetailsOptionalHeader">
+						<h3>Optional Parameters</h3>
+						</div>
+						<div id="callOptionalHook">
+						</div>
+					</div>
+					<div id="callDetailsReturned">
+						<div id="callDetailsReturnedHeader">
+						<h3>Data Returned</h3>
+						</div>
+						<div id="callReturnedHook">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="callBuilderDiv">
+				<h1>OMI Call Builder</h1>
+				<p>Select Required and Optional Parameters to Begin Building Your Call</p>
+				<div id="callBuilderContents">
+					<form name="omiBuilderForm">
+						<fieldset class="builderBox">
+							<legend>Call Builder Inputs</legend>
+							<div id="callBuilderInputs">
+								<div id="callBuilderInputsMandatory">
+								<div>
+									<label for="customer">customer</label>
+									<input type="text" id="customer" name="callBuilderaccountCode" placeholder="account code" size="13rem">
+								</div>
+								<div>
+									<label for="username">username</label>
+									<input type="text" id="username" name="callBuilderUserName">
+								</div>
+								<div>
+									<label for="password">password</label>
+									<input type="text" id="password" name="callBuilderUserPassword">
+								</div>
+								</div>
+								<div id="callBuilderInputsSelectable">
+								</div>
+							</div>
+						</fieldset>
+						<div id="callBuilderUtilityRow">
+							<div class="callBuilderUtilityRowItem" id="callBuilderGenerateOmiButton"><button type="button" onclick="generateOMI()">Generate OMI URL</button></div>
+							<div class="callBuilderUtilityRowItem" id="callBuilderEpochConverter">
+ 								<h3>Epoch Converter:</h3>
+								<table id="epochConverterPickerTable">
+									<tr>
+										<td>Date</td>
+										<td>Hr</td>
+										<td>Min</td>
+										<td>Sec</td>
+										<!-- <td></td> -->
+										<td class="epochValueCell">Epoch Value</td>
+									</tr>
+									<tr>
+										<td><input type="text" id="datepicker" size="15"></td>
+										<td><input id="epochConverterInputHr" type="text" size="2" maxlength="2"></td>
+										<td><input id="epochConverterInputMin" type="text" size="2" maxlength="2"></td>
+										<td><input id="epochConverterInputSec" type="text" size="2" maxlength="2"></td>
+										<!-- <td><select><option>PST</option><option>GMT</option></select></td> -->
+										<td class="epochValueCell"><input type="text" size="11" id="epochValueOutput"></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<fieldset class="builderBox">
+						    <legend>Call Builder Outputs</legend>
+						    <div>
+						      <label for="callBuilderURLtext">URL Text:</label>
+						      <input type="text" id="callBuilderURLtext" value="  ... " size="90%">
+						    </div>
+						    <div>
+						     URL Link: <a id="callBuilderURLlinkHook"></a>
+						    </div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+	</div>
+	</div>
+  	<script src="js/omiLibrary.js"></script>
+  	<script src="js/omiFilterLogic.js"></script>
+	<script src="js/omiBuilder.js"></script>
+	<script src="js/selectableValue.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/pikaday.js"></script>
+	<script src="js/epochConversionFuncs.js"></script>
+  </body>
+</html>

@@ -1,0 +1,279 @@
+/*/////////////////
+//I used a grid design to control the main layout of the page
+//For colors and design, I leaned on some of the more recent Zonar site design suggestions, like https://confluence.zonarsystems.net/display/UX/Driver+Dashboard+-+UXI and https://confluence.zonarsystems.net/pages/viewpage.action?pageId=68160445
+//If this were for a larger project I would have used SASS
+/////////////////*/
+
+#bodyContainer {
+  display:grid;
+  grid-template-rows: .6fr 9.1fr .3fr;
+  grid-gap: 1em;
+}
+
+#mainContainer {
+  display:grid;
+  grid-template-columns: 1fr 2.5fr 7fr;
+}
+
+#firstColumn {
+  margin-left: 2.5rem;
+}
+
+#secondColumn {
+  margin: 0px 1.5rem;
+}
+
+#thirdColumn {
+  margin-right: 2.5rem;
+}
+
+#callDetailsContents {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  padding-bottom: 7px;
+}
+
+#callDetailsDiv {
+  display:grid;
+  grid-template-rows: 4fr 6fr;
+}
+
+#matchingCallDiv {
+  display:grid;
+  grid-template-rows: 1.5fr 8.5fr;
+}
+
+#callReturnedHook, #callOptionalHook, #callRequiredHook{
+  height: 25vh;
+  overflow: auto;
+}
+
+#callReturnedHook ul {
+  margin: 0px;
+}
+
+#omiCallItems {
+  margin: 0px;
+  height: 60vh;
+  overflow:auto;
+}
+
+body {
+  height: 100vh;
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+  background-color:#f3f4f5;
+  color:#293239;
+
+}
+
+legend  {
+    background-color: #49555e;
+    color: #fff;
+    padding: .25rem .5rem;
+}
+
+input[type=checkbox], input[type=radio], input[type=text] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+}
+
+input[type=radio] {
+  bottom: 2px;
+}
+
+#callBuilderInputsMandatory, #callBuilderInputsSelectable {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#callBuilderInputsMandatory div, #callBuilderInputsSelectable div{
+  padding: 1px 4px;
+}
+
+#callBuilderInputs label {
+  padding-right: 3px;
+}
+
+.selectableReturnDiv {
+  height: 40%;
+}
+
+#checkboxValues  {
+  margin-top: 1rem;
+}
+
+#header {
+  border-bottom: 1em solid #49555e;
+  background-color: white;
+}
+
+
+#omiCallItems li {
+  cursor: pointer;
+}
+
+fieldset {
+  background-color: #d0d3d5 ;
+  border: none;
+  border-radius: .5em;
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.19);
+}
+
+#returnValueSelector {
+  border: none;
+}
+
+
+#logicSelectorDiv {
+  margin-top: 1rem;
+}
+
+#showopenInsp ul {
+  list-style: none;
+  }
+
+#omiCallItems li:nth-child(odd) {
+  background-color: #e2e4e6;
+}
+
+#omiCallItems {
+  padding: 0px;
+}
+#omiCallItems li h2 {
+  margin: 0px;
+  padding: .5rem 0px;
+}
+
+
+h1 {
+  margin: 0px;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+#matchingCallHeader p, #callDetailsInstructions{
+  margin: 0px;
+  padding-bottom: 2rem;
+}
+
+#callReturnedHook, #callOptionalHook, #callRequiredHook {
+/*  background-color:#f3f4f5;
+*/}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#callDetailsName {
+  margin: 0px;
+  padding-bottom: 1rem;
+}
+
+#callBuilderDiv > p {
+  margin-top: 0px;
+}
+
+#callDetailsInstructions {
+  padding-bottom: 1rem;
+}
+
+h3 {
+  margin-top: 0px;
+}
+
+#callBuilderDiv h1 {
+  border-top: .2rem solid #49555e;
+}
+#zonarLogo {
+  height: 3.7rem;
+  width: 12rem;
+  padding: .5rem 2rem;
+}
+
+#zonarLogo img {
+  height: 100%;
+  width: 100%;
+}
+
+#callBuilderUtilityRow {
+  display:grid;
+  grid-template-columns: 3fr 7fr;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+#callBuilderUtilityRow button {
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.19);
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+}
+
+/*
+#callBuilderUtilityRow {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: baseline;
+  padding: 1rem 0px;
+}*/
+
+/*#callBuilderUtilityRowItem {
+  flex-grow: 1;
+  align-self: center;
+}*/
+
+/*#callBuilderGenerateOmiButton{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}*/
+
+#callBuilderGenerateOmiButton button {
+  height: 2.8rem;
+  margin: 1rem;
+  background: transparent;
+  border:2.5px solid #2D8ED9;
+  border-radius: 28px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+}
+
+#callBuilderGenerateOmiButton button:hover {
+  background: #0074CD;
+  text-decoration: none;
+  border:2.5px solid #0074CD;
+  color: white;
+}
+
+
+#callBuilderEpochConverter {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4rem;  
+}
+
+#callBuilderEpochConverter h3 {
+  margin-bottom: 0px;
+  padding-right: 2rem;
+  margin-top: 1.5rem;
+}
+
+#epochConverterPickerTable {
+
+}
+
+.epochValueCell{
+  padding-left: 2rem;
+}
+
+#omiCallItems li h2 {
+  margin-left: .5em;
+}
